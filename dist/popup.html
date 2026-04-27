@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Threat Blocker - Popup</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🛡️ Threat Blocker</h1>
+      <div class="header-buttons">
+        <button id="historyBtn" class="settings-btn">📊 History</button>
+        <button id="settingsBtn" class="settings-btn">⚙️ Settings</button>
+      </div>
+    </div>
+
+    <div class="stats-container">
+      <div class="stat-box">
+        <div class="stat-label">Blocked Today</div>
+        <div class="stat-value" id="blockedToday">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Total Blocked</div>
+        <div class="stat-value" id="totalBlocked">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Indicators</div>
+        <div class="stat-value" id="indicatorCount">0</div>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <label class="toggle-label">
+        <input type="checkbox" id="blockingToggle" checked>
+        <span class="toggle-slider"></span>
+        <span class="toggle-text">Blocking Enabled</span>
+      </label>
+    </div>
+
+    <div class="section">
+      <h3>📊 Threats by Severity</h3>
+      <div id="severityChart" class="chart">
+        <div class="chart-item">
+          <span class="severity-critical">Critical</span>
+          <span class="count" id="critical">0</span>
+        </div>
+        <div class="chart-item">
+          <span class="severity-high">High</span>
+          <span class="count" id="high">0</span>
+        </div>
+        <div class="chart-item">
+          <span class="severity-medium">Medium</span>
+          <span class="count" id="medium">0</span>
+        </div>
+        <div class="chart-item">
+          <span class="severity-low">Low</span>
+          <span class="count" id="low">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>📡 Feeds</h3>
+      <div id="feedsList" class="feeds-list"></div>
+    </div>
+
+    <div class="actions">
+      <button id="updateBtn" class="btn btn-primary">🔄 Update Now</button>
+      <button id="reportBtn" class="btn btn-secondary">📋 Report Issue</button>
+    </div>
+
+    <div class="footer">
+      <small>Last update: <span id="lastUpdate">Never</span></small>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

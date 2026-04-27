@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Threat Blocker - Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🛡️ Threat Blocker Settings</h1>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="feeds">📡 Threat Feeds</button>
+      <button class="tab-btn" data-tab="general">⚙️ General</button>
+      <button class="tab-btn" data-tab="surecookie">🍪 SureCookie</button>
+      <button class="tab-btn" data-tab="whitelist">✅ Whitelist</button>
+    </div>
+
+    <!-- Feeds Tab -->
+    <div id="feeds" class="tab-content active">
+      <h3>Configure Threat Feeds</h3>
+      <div id="feedsContainer" class="feeds-container"></div>
+      
+      <div class="api-section">
+        <h4>API Keys</h4>
+        <div class="form-group">
+          <label>VirusTotal API Key:</label>
+          <input type="password" id="virusTotalKey" placeholder="Enter your VirusTotal API key">
+        </div>
+        <div class="form-group">
+          <label>AbuseIPDB API Key:</label>
+          <input type="password" id="abuseIPDBKey" placeholder="Enter your AbuseIPDB API key">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="updateInterval">Update Interval (minutes):</label>
+        <input type="number" id="updateInterval" min="15" max="1440" value="60">
+      </div>
+    </div>
+
+    <!-- General Tab -->
+    <div id="general" class="tab-content">
+      <h3>General Settings</h3>
+      
+      <div class="toggle-group">
+        <label class="toggle-label">
+          <input type="checkbox" id="blockingEnabled" checked>
+          <span class="toggle-slider"></span>
+          <span>Enable Blocking</span>
+        </label>
+        <small>When disabled, threats are logged but not blocked</small>
+      </div>
+
+      <div class="toggle-group">
+        <label class="toggle-label">
+          <input type="checkbox" id="notificationsEnabled" checked>
+          <span class="toggle-slider"></span>
+          <span>Enable Notifications</span>
+        </label>
+        <small>Show notifications when threats are blocked</small>
+      </div>
+
+      <div class="form-group">
+        <label>Threat Level to Block:</label>
+        <select id="blockLevel">
+          <option value="critical">Critical Only</option>
+          <option value="high" selected>High & Critical</option>
+          <option value="medium">Medium & Above</option>
+          <option value="low">All Threats</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Data Retention (days):</label>
+        <input type="number" id="dataRetention" min="1" max="365" value="30">
+      </div>
+    </div>
+
+    <!-- SureCookie Tab -->
+    <div id="surecookie" class="tab-content">
+      <h3>SureCookie Integration</h3>
+      
+      <div class="toggle-group">
+        <label class="toggle-label">
+          <input type="checkbox" id="surecookieEnabled">
+          <span class="toggle-slider"></span>
+          <span>Enable SureCookie Integration</span>
+        </label>
+        <small>Send threat alerts to surecookie_pilot</small>
+      </div>
+
+      <div class="form-group">
+        <label for="surecookieEndpoint">SureCookie Endpoint:</label>
+        <input type="url" id="surecookieEndpoint" placeholder="http://localhost:5000/api/threats" value="http://localhost:5000/api/threats">
+      </div>
+
+      <div class="form-group">
+        <label for="surecookieApiKey">API Key (optional):</label>
+        <input type="password" id="surecookieApiKey" placeholder="Leave blank if not required">
+      </div>
+
+      <div class="form-group">
+        <button id="testConnection" class="btn btn-secondary">🔗 Test Connection</button>
+      </div>
+
+      <div id="connectionStatus" class="status-message" style="display: none;"></div>
+
+      <h4>Alert Configuration</h4>
+      <div class="toggle-group">
+        <label class="toggle-label">
+          <input type="checkbox" id="alertCritical" checked>
+          <span class="toggle-slider"></span>
+          <span>Alert on Critical Threats</span>
+        </label>
+      </div>
+
+      <div class="toggle-group">
+        <label class="toggle-label">
+          <input type="checkbox" id="alertHigh" checked>
+          <span class="toggle-slider"></span>
+          <span>Alert on High Threats</span>
+        </label>
+      </div>
+
+      <div class="toggle-group">
+        <label class="toggle-label">
+          <input type="checkbox" id="alertMedium">
+          <span class="toggle-slider"></span>
+          <span>Alert on Medium Threats</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Whitelist Tab -->
+    <div id="whitelist" class="tab-content">
+      <h3>Whitelist Domains</h3>
+      <p>Domains in the whitelist will never be blocked, even if they match threat indicators.</p>
+      
+      <div class="form-group">
+        <input type="text" id="whitelistInput" placeholder="e.g., example.com">
+        <button id="addWhitelistBtn" class="btn btn-primary">Add Domain</button>
+      </div>
+
+      <div id="whitelistContainer" class="whitelist-container"></div>
+    </div>
+
+    <div class="footer">
+      <button id="saveBtn" class="btn btn-primary btn-large">💾 Save Settings</button>
+      <button id="resetBtn" class="btn btn-secondary">🔄 Reset to Defaults</button>
+      <div id="saveStatus" class="status-message" style="display: none;"></div>
+    </div>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

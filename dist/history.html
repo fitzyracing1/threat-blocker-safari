@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Threat History - Threat Blocker</title>
+  <link rel="stylesheet" href="history.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🛡️ Threat History</h1>
+      <div class="header-actions">
+        <button id="refreshBtn" class="btn btn-primary">🔄 Refresh</button>
+        <button id="exportBtn" class="btn btn-secondary">📥 Export</button>
+        <button id="settingsBtn" class="btn btn-secondary">⚙️ Settings</button>
+      </div>
+    </header>
+
+    <div class="stats-summary">
+      <div class="stat-card">
+        <div class="stat-value" id="totalThreats">0</div>
+        <div class="stat-label">Total Threats</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="blockedThreats">0</div>
+        <div class="stat-label">Blocked</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="resumedThreats">0</div>
+        <div class="stat-label">Resumed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="reportedThreats">0</div>
+        <div class="stat-label">Reported to ISP</div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search by URL, IP, or attack type...">
+      <select id="attackTypeFilter">
+        <option value="">All Attack Types</option>
+        <option value="phishing">Phishing</option>
+        <option value="malware">Malware</option>
+        <option value="c2">C&C/C2</option>
+        <option value="exploit">Exploit</option>
+        <option value="ransomware">Ransomware</option>
+      </select>
+      <select id="severityFilter">
+        <option value="">All Severities</option>
+        <option value="critical">Critical</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="blocked">Blocked</option>
+        <option value="resumed">Resumed</option>
+        <option value="reported">Reported to ISP</option>
+      </select>
+    </div>
+
+    <div id="loading" class="loading">Loading threat logs...</div>
+    <div id="noData" class="no-data" style="display: none;">No threats detected yet</div>
+
+    <div id="threatList" class="threat-list"></div>
+
+    <!-- Threat Details Modal -->
+    <div id="detailsModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Threat Details</h2>
+        <div id="threatDetails"></div>
+      </div>
+    </div>
+
+    <!-- ISP Report Modal -->
+    <div id="ispReportModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>ISP Report Email Template</h2>
+        <div id="ispReportContent"></div>
+        <button id="copyEmailBtn" class="btn btn-primary">📋 Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="history.js"></script>
+</body>
+</html>

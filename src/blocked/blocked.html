@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚫 Threat Blocked</title>
+  <link rel="stylesheet" href="blocked.css">
+</head>
+<body>
+  <div class="container">
+    <div class="block-icon">🚫</div>
+    <h1>Threat Blocked</h1>
+    <p class="subtitle">This site has been blocked by Threat Blocker for security reasons.</p>
+
+    <div class="threat-details">
+      <h3>Threat Information</h3>
+      <div class="detail-row">
+        <span class="label">Threat Type:</span>
+        <span class="value" id="threatType">-</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Severity:</span>
+        <span class="value" id="threatSeverity">-</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Source:</span>
+        <span class="value" id="threatSource">-</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Description:</span>
+        <span class="value" id="threatDescription">-</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Blocked URL:</span>
+        <span class="value url" id="blockedUrl">-</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Time:</span>
+        <span class="value" id="blockedTime">-</span>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>What should you do?</h4>
+      <ul>
+        <li>If you believe this block is a mistake, you can report it to the extension</li>
+        <li>Check the URL in the address bar - it may be a misspelled domain</li>
+        <li>If you trust this site, you can add it to your whitelist in Settings</li>
+        <li>Contact the website owner if you suspect the site has been compromised</li>
+      </ul>
+    </div>
+
+    <div class="actions">
+      <button id="goBackBtn" class="btn btn-primary">← Go Back</button>
+      <button id="continueBtn" class="btn btn-warning">⚠️ Continue Anyway (Not Recommended)</button>
+      <button id="whitelistBtn" class="btn btn-secondary">✅ Add to Whitelist</button>
+      <button id="reportBtn" class="btn btn-secondary">📋 Report False Positive</button>
+      <button id="viewHistoryBtn" class="btn btn-secondary">📊 View Threat History</button>
+    </div>
+
+    <div class="footer">
+      <p>Protected by <strong>Threat Blocker</strong></p>
+      <small>Powered by URLhaus, PhishTank, VirusTotal, and AbuseIPDB</small>
+    </div>
+  </div>
+
+  <script src="blocked.js"></script>
+</body>
+</html>

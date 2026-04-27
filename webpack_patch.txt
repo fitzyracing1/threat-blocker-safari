@@ -1,0 +1,12 @@
+      patterns: [
+        { from: 'src/manifest.json', to: 'manifest.json' },
+        { from: 'src/popup/popup.html', to: 'popup.html' },
+        { from: 'src/settings/settings.html', to: 'settings.html' },
+        { from: 'src/blocked/blocked.html', to: 'blocked.html' },
+        { from: 'src/history/history.html', to: 'history.html' },
+        { from: 'src/popup/popup.css', to: 'popup.css' },
+        { from: 'src/settings/settings.css', to: 'settings.css' },
+        { from: 'src/blocked/blocked.css', to: 'blocked.css' },
+        { from: 'src/history/history.css', to: 'history.css' },
+        { from: 'icons', to: 'icons' },
+      ],
